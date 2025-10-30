@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boda - Heber & Kaitlyn</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome para íconos -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  
+  <!-- Nuestros estilos personalizados -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Scripts -->
+  <script type="module" src="main.js" defer></script>   
+  <script type="module" src="countdown.js" defer></script>
+  
+  <!-- Bootstrap JS y Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" defer></script>
+
+</head>
+<body>
+  <header class="hero" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80')">
+    <div class="hero-overlay"></div>
+    <div class="container text-center hero-content">
+      <h1 class="display-3 mb-2">Heber & Kaitlyn</h1>
+      <p class="lead">¡Nos casamos!</p>
+    </div>
+  </header>
+
+  <section id="contador" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Faltan para el gran día</h2>
+      <div id="countdown">
+        <div class="countdown-item">
+          <span class="number" id="countdown-days">00</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="countdown-hours">00</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="countdown-minutes">00</span>
+          <span class="label">Minutos</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="countdown-seconds">00</span>
+          <span class="label">Segundos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ubicacion" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Ubicación</h2>
+      <p class="text-center mb-4">
+        <i class="fas fa-map-marker-alt text-primary"></i>
+        Campo Mosqueda, Mexicali, Baja California, México
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="ratio ratio-16x9 shadow rounded">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3377.750098638886!2d-115.28086552452216!3d32.15704187392889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d7c1d73752cc15%3A0x64ad373833d2524d!2sCampo%20Mosqueda!5e0!3m2!1ses-419!2smx!4v1761846569816!5m2!1ses-419!2smx" 
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Nuestra historia</h2>
+      <div class="historia-fotos row g-4 justify-content-center">
+        <div class="col-md-4 col-6">
+          <img src="ejemplo1.jpg" alt="foto 1" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-4 col-6">
+          <img src="ejemplo2.jpg" alt="foto 2" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-4 col-6">
+          <img src="ejemplo3.jpg" alt="foto 3" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="itinerario" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Itinerario</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="timeline">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-church fs-4 me-3 text-primary"></i>
+                  <div>
+                    <h5 class="mb-0">4:00 PM</h5>
+                    <p class="mb-0">Ceremonia</p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-utensils fs-4 me-3 text-primary"></i>
+                  <div>
+                    <h5 class="mb-0">6:00 PM</h5>
+                    <p class="mb-0">Cena</p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-glass-cheers fs-4 me-3 text-primary"></i>
+                  <div>
+                    <h5 class="mb-0">8:00 PM</h5>
+                    <p class="mb-0">Fiesta</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="anuncio" class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <div class="alert alert-primary border-0 shadow-sm" role="alert">
+            <h2 class="h4 mb-3">Anuncio importante</h2>
+            <p class="mb-0">Por favor confirma tu asistencia antes del <strong>15 de febrero 2025</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="regalos" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Mesa de regalos</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <i class="fas fa-gift display-4 text-primary mb-3"></i>
+              <p class="lead mb-0">Tu presencia es nuestro mejor regalo 💚</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dresscode" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Dress Code</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <i class="fas fa-tshirt display-4 text-primary mb-3"></i>
+              <p class="lead mb-0">Formal - Tonos claros</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="confirmacion" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Confirmación de asistencia</h2>
+
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+              <div class="codigo-form mb-4">
+                <div class="input-group">
+                  <input type="text" id="codigo" class="form-control" placeholder="Ingresa tu código de invitación">
+                  <button id="buscarInvitado" class="btn btn-primary">
+                    <i class="fas fa-search me-2"></i>Buscar
+                  </button>
+                </div>
+              </div>
+
+              <div id="invitado-info" class="oculto">
+                <h3 id="nombreInvitado" class="h4 mb-4 text-center"></h3>
+                <form id="formConfirmacion">
+                  <div class="mb-3">
+                    <label class="form-label">¿Asistirás?</label>
+                    <select id="asistencia" class="form-select">
+                      <option value="si">Sí</option>
+                      <option value="no">No</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="acompanantes" class="form-label">Número de acompañantes</label>
+                    <input type="number" id="acompanantes" class="form-control" min="0">
+                  </div>
+
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-check me-2"></i>Confirmar asistencia
+                    </button>
+                  </div>
+                </form>
+                <p id="mensajeConfirmacion" class="text-success mt-3 mb-0 text-center"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <p class="mb-0">
+        <i class="fas fa-heart text-danger me-2"></i>
+        Heber & Kaitlyn
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
