@@ -1,0 +1,153 @@
+/* Estilos para el panel de administración */
+
+/* Variables específicas del admin */
+:root {
+  --sidebar-width: 240px;
+  --header-height: 60px;
+  --admin-primary: var(--primary);
+  --admin-secondary: var(--secondary);
+  --danger: #e74c3c;
+  --success: #27ae60;
+  --warning: #f39c12;
+}
+
+/* Layout básico */
+.admin-panel {
+  background-color: var(--bg-alt);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 48px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  background: white;
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+  color: var(--primary);
+  background-color: var(--bg-accent);
+}
+
+.sidebar .nav-link.active {
+  color: var(--primary);
+  background-color: var(--bg-accent);
+}
+
+/* Contenido principal */
+main {
+  padding-top: 1.5rem;
+}
+
+/* Tarjetas */
+.card {
+  border: none;
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.card-title {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tablas */
+.table {
+  margin-bottom: 0;
+}
+
+.table th {
+  border-top: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* Badges y estados */
+.badge {
+  padding: 0.5em 0.75em;
+  font-weight: 500;
+}
+
+.badge-confirmado {
+  background-color: var(--success);
+  color: white;
+}
+
+.badge-pendiente {
+  background-color: var(--warning);
+  color: white;
+}
+
+.badge-rechazado {
+  background-color: var(--danger);
+  color: white;
+}
+
+/* Formularios */
+.input-group-text {
+  background-color: white;
+  border-right: none;
+}
+
+.input-group .form-control {
+  border-left: none;
+}
+
+.input-group .form-control:focus {
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+/* Botones de acción */
+.btn-action {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -240px;
+    z-index: 1000;
+    transition: 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+}
+
+/* Charts */
+canvas {
+  max-height: 300px;
+  width: 100% !important;
+}

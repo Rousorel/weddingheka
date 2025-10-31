@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Boda H&K</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Nuestros estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-panel">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#invitados">
+                                <i class="fas fa-users me-2"></i>
+                                Invitados
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#estadisticas">
+                                <i class="fas fa-chart-pie me-2"></i>
+                                Estadísticas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#configuracion">
+                                <i class="fas fa-cog me-2"></i>
+                                Configuración
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Contenido principal -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <button type="button" class="btn btn-sm btn-outline-primary me-2">
+                            <i class="fas fa-download me-1"></i>
+                            Exportar
+                        </button>
+                        <button id="btnLogout" type="button" class="btn btn-sm btn-outline-danger ms-2 d-none">
+                            <i class="fas fa-sign-out-alt me-1"></i>
+                            Cerrar sesión
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de resumen -->
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted">Total Asistentes</h5>
+                                <h2 class="mt-2 mb-0" id="totalInvitados">0</h2>
+                                <p class="text-success mt-2 mb-0">
+                                    <i class="fas fa-users"></i>
+                                    <small>Total incluyendo acompañantes</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted">Asistencia Confirmada</h5>
+                                <h2 class="mt-2 mb-0" id="totalConfirmados">0</h2>
+                                <p class="text-success mt-2 mb-0">
+                                    <i class="fas fa-check-double"></i>
+                                    <small>Total confirmados + acompañantes</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted">Pendientes</h5>
+                                <h2 class="mt-2 mb-0" id="totalPendientes">0</h2>
+                                <p class="text-warning mt-2 mb-0">
+                                    <i class="fas fa-clock"></i>
+                                    <small>Sin confirmar</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted">No Asistirán</h5>
+                                <h2 class="mt-2 mb-0" id="totalRechazados">0</h2>
+                                <p class="text-danger mt-2 mb-0">
+                                    <i class="fas fa-times"></i>
+                                    <small>Han declinado la invitación</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="row mb-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Estado de Confirmaciones</h5>
+                                <canvas id="confirmacionesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Tendencia de Confirmaciones</h5>
+                                <canvas id="tendenciaChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de invitados -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">Lista de Invitados</h5>
+                            <div class="d-flex gap-2">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Buscar invitado...">
+                                </div>
+                                <button class="btn btn-primary btn-agregar">
+                                    <i class="fas fa-plus me-1"></i>
+                                    Agregar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Código</th>
+                                        <th>Estado</th>
+                                        <th>Acompañantes</th>
+                                        <th>Fecha Confirmación</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaInvitados">
+                                    <!-- Los invitados se cargarán dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar/Editar Invitado -->
+    <!-- Modal de Login (Email / Password) -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="formLogin">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" id="loginEmail" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" id="loginPassword" class="form-control" required>
+                        </div>
+                        <div id="loginError" class="text-danger small mb-2" style="display:none"></div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalInvitado" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Agregar Invitado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formInvitado">
+                        <input type="hidden" id="invitadoId">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigo" class="form-label">Código</label>
+                            <input type="text" class="form-control" id="codigo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado" required>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="confirmado">Confirmado</option>
+                                <option value="rechazado">No asistirá</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="acompanantes" class="form-label">Acompañantes</label>
+                            <input type="number" class="form-control" id="acompanantes" min="0" value="0">
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { firebaseConfig } from './firebase-config.js';
+
+        // Initialize Firebase
+        initializeApp(firebaseConfig);
+    </script>
+    <script src="admin-firebase.js" type="module"></script>
+    <script src="admin.js" type="module"></script>
+</body>
+</html>

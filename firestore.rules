@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /invitados/{invitado} {
+      allow read, write: if true;  // Posteriormente podrías agregar autenticación
+      
+      // Validación de campos
+      allow create: if 
+        request.resource.data.nombre is string &&
+        request.resource.data.codigo is string &&
+        (request.resource.data.estado in ['pendiente', 'confirmado', 'rechazado']) &&
+        (!('fechaConfirmacion' in request.resource.data) || 
+         (request.resource.data.estado == 'confirmado' && 
+          request.resource.data.fechaConfirmacion is timestamp));
+      
+      allow update: if 
+        (!('fechaConfirmacion' in request.resource.data) || 
+         (request.resource.data.estado == 'confirmado' && 
+          request.resource.data.fechaConfirmacion is timestamp));
+    }
+  }
+}

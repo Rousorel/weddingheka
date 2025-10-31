@@ -149,21 +149,21 @@ section, header, footer {
 
 .hero h1 {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 10vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   color: white;
-  margin: 0 0 1rem 0;
-  line-height: 1.1;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
   letter-spacing: -0.02em;
-  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
   font-family: var(--font-special);
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
   color: var(--secondary-light);
-  margin: 0;
+  margin: 1rem 0;
   line-height: 1.4;
-  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes subtle-float {
@@ -257,7 +257,7 @@ h2::after {
 }
 
 .countdown-item .label {
-  font-size: clamp(0.7rem, 2vw, 0.85rem) !important;
+  font-size: clamp(0.6rem, 2vw, 0.85rem) !important;
   color: var(--text-light) !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;

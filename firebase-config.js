@@ -1,9 +1,5 @@
-// Importa los módulos de Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
 // Configuración de tu proyecto Firebase
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyA-7uWJe3uTA_HvK8aEGyhgm-3bO8XC0V4",
   authDomain: "confirmacionesboda-e63a9.firebaseapp.com",
   projectId: "confirmacionesboda-e63a9",
@@ -13,6 +9,5 @@ const firebaseConfig = {
   measurementId: "G-BFHXFY79VT"
 };
 
-// Inicializa Firebase
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+// Email del administrador (ajusta esto al email del usuario admin en Firebase Auth)
+export const adminEmail = 'user@example.com';
