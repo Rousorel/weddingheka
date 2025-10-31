@@ -336,30 +336,82 @@ input::placeholder, select::placeholder, textarea::placeholder {
 
 /* Historia fotos */
 .historia-fotos {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  padding: 1.5rem 0;
-  margin: 0 -1rem;
-}
-
-.historia-fotos img {
-  width: clamp(160px, 35vw, 280px);
-  height: clamp(160px, 35vw, 280px);
-  object-fit: cover;
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 2rem auto;
+  perspective: 1000px;
+  background: var(--bg-accent);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
-  transition: all 0.4s ease;
-  border: 4px solid var(--bg);
-  filter: grayscale(10%) brightness(102%);
 }
 
-.historia-fotos img:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: var(--shadow-lg);
-  filter: grayscale(0%) brightness(105%);
-  border-color: var(--accent-light);
+.historia-fotos .card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.historia-fotos .photo-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, opacity 0.3s ease, scale 0.3s ease;
+  user-select: none;
+  touch-action: none;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.historia-fotos .photo-card:first-child {
+  cursor: grab;
+  z-index: 3;
+}
+
+.historia-fotos .photo-card:nth-child(2) {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0.9;
+  z-index: 2;
+}
+
+.historia-fotos .photo-card:nth-child(3) {
+  transform: scale(0.9) translateY(20px);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.historia-fotos .photo-card:nth-child(n+4) {
+  transform: scale(0.85) translateY(30px);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.historia-fotos .photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.historia-fotos .photo-card.swiping {
+  transition: none;
+  cursor: grabbing;
+}
+
+.historia-fotos .photo-card.swipe-left {
+  transform: translateX(-150%) rotate(-30deg);
+  opacity: 0;
+}
+
+.historia-fotos .photo-card.swipe-right {
+  transform: translateX(150%) rotate(30deg);
+  opacity: 0;
 }
 
 #invitado-info.oculto{display:none}
