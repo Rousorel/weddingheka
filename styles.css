@@ -189,7 +189,7 @@ h2::after {
   transform: translateX(-50%);
   width: 60px;
   height: 2px;
-  background: var(--accent-light);
+  background: var(--primary-dark);
   border-radius: 1px;
 }
 
@@ -337,19 +337,19 @@ input::placeholder, select::placeholder, textarea::placeholder {
 /* Historia fotos */
 .historia-fotos {
   position: relative;
-  width: 300px;
-  height: 400px;
-  margin: 2rem auto;
-  perspective: 1000px;
-  background: var(--bg-accent);
+  width: 320px;
+  height: 420px;
+  margin: 3rem auto;
+  perspective: 1200px;
+  background: transparent;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
 }
 
 .historia-fotos .card-stack {
   position: relative;
   width: 100%;
   height: 100%;
+  perspective: 1200px;
 }
 
 .historia-fotos .photo-card {
@@ -359,35 +359,46 @@ input::placeholder, select::placeholder, textarea::placeholder {
   width: 100%;
   height: 100%;
   background-color: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, opacity 0.3s ease, scale 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
   user-select: none;
   touch-action: none;
-  transform-origin: center center;
+  transform-origin: center 80%;
   will-change: transform, opacity;
+  border: 6px solid white;
+  overflow: hidden;
 }
 
 .historia-fotos .photo-card:first-child {
   cursor: grab;
-  z-index: 3;
+  z-index: 10;
+  transform: rotateZ(4deg);
 }
 
 .historia-fotos .photo-card:nth-child(2) {
-  transform: scale(0.95) translateY(10px);
-  opacity: 0.9;
-  z-index: 2;
+  transform: scale(0.92) translateY(15px) rotateZ(-8deg);
+  opacity: 0.85;
+  z-index: 9;
 }
 
 .historia-fotos .photo-card:nth-child(3) {
-  transform: scale(0.9) translateY(20px);
-  opacity: 0.8;
-  z-index: 1;
+  transform: scale(0.84) translateY(30px) rotateZ(12deg);
+  opacity: 0.7;
+  z-index: 8;
 }
 
-.historia-fotos .photo-card:nth-child(n+4) {
-  transform: scale(0.85) translateY(30px);
-  opacity: 0.7;
+.historia-fotos .photo-card:nth-child(4) {
+  transform: scale(0.76) translateY(45px) rotateZ(-6deg);
+  opacity: 0.55;
+  z-index: 7;
+}
+
+.historia-fotos .photo-card:nth-child(n+5) {
+  transform: scale(0.68) translateY(60px) rotateZ(9deg);
+  opacity: 0.4;
   z-index: 0;
 }
 
@@ -405,13 +416,71 @@ input::placeholder, select::placeholder, textarea::placeholder {
 }
 
 .historia-fotos .photo-card.swipe-left {
-  transform: translateX(-150%) rotate(-30deg);
-  opacity: 0;
+  animation: swipeOutLeft 0.3s ease-out forwards;
 }
 
 .historia-fotos .photo-card.swipe-right {
-  transform: translateX(150%) rotate(30deg);
-  opacity: 0;
+  animation: swipeOutRight 0.3s ease-out forwards;
+}
+
+@keyframes swipeOutLeft {
+  to {
+    transform: translateX(-150%) rotate(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeOutRight {
+  to {
+    transform: translateX(150%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .historia-fotos {
+    width: 280px;
+    height: 380px;
+    margin: 2.5rem auto;
+  }
+
+  .historia-fotos .photo-card {
+    border: 5px solid white;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .historia-fotos {
+    width: 240px;
+    height: 320px;
+    margin: 2rem auto;
+  }
+
+  .historia-fotos .photo-card {
+    border: 4px solid white;
+    border-radius: 8px;
+  }
+
+  .historia-fotos .photo-card:first-child {
+    transform: rotateZ(4deg);
+  }
+
+  .historia-fotos .photo-card:nth-child(2) {
+    transform: scale(0.88) translateY(12px) rotateZ(-8deg);
+  }
+
+  .historia-fotos .photo-card:nth-child(3) {
+    transform: scale(0.76) translateY(24px) rotateZ(12deg);
+  }
+
+  .historia-fotos .photo-card:nth-child(4) {
+    transform: scale(0.64) translateY(36px) rotateZ(-6deg);
+  }
+
+  .historia-fotos .photo-card:nth-child(n+5) {
+    transform: scale(0.52) translateY(48px) rotateZ(9deg);
+  }
 }
 
 #invitado-info.oculto{display:none}
@@ -557,4 +626,160 @@ button:focus, input:focus, select:focus, textarea:focus{box-shadow:0 0 0 3px rgb
 
 /* small tweaks for number input spinner consistency */
 input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appearance:textfield}
+
+/* Contador: tamaño aumentado para escritorio y móvil */
+.contador-title{
+  font-family: var(--font-special);
+  /* más grande en escritorio, todavía responsivo */
+  font-size: clamp(1.6rem, 5.5vw, 2.6rem);
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.countdown-grid{ /* container set as flex in HTML */
+  gap: 1.5rem;
+}
+
+.count-box{
+  width: 120px;
+  height: 96px;
+  border: 4px solid var(--text-muted);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,250,0.98));
+  box-shadow: 0 10px 26px rgba(42,93,67,0.08);
+}
+
+.count-box .number{
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  color: var(--primary-dark);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.contador-subtitle{
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+}
+
+.date-display{
+  align-items: center;
+}
+
+.date-side{
+  min-width: 160px;
+}
+
+.date-label{
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  border-top: 2px solid var(--text-light);
+  border-bottom: 2px solid var(--text-light);
+  padding: 0.5rem 0;
+}
+
+.date-day{
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  color: var(--primary-dark);
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+
+@media (max-width: 900px){
+  .count-box{ width: 100px; height: 82px }
+  .count-box .number{ margin-bottom: 10px; font-size: 2.6rem}
+  .date-side{ min-width: 110px }
+  .date-day{ font-size: 8rem; margin-bottom: 2rem; }
+  
+}
+
+@media (max-width: 640px){
+  .count-box{ width: 84px; height: 72px }
+  .count-box .number{ margin-bottom: 10px; font-size: 2.4rem }
+  .date-side{ min-width: 80px }
+  .date-day{ font-size: 8.6rem; margin-bottom: 2rem; }
+  .contador-title{ font-size: clamp(1.4rem, 6vw, 1.9rem) }
+}
+
+/* Itinerario inline dentro de contador */
+.itinerario-inline {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 2px solid var(--border-light);
+}
+
+.itinerario-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.timeline-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+  border-radius: 50%;
+  color: white;
+}
+
+.timeline-text h5 {
+  font-size: 1.05rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.timeline-text p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px){
+  .itinerario-inline {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  
+  .timeline-icon {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .timeline-icon i {
+    font-size: 1.2rem !important;
+  }
+  
+  .timeline-text h5 {
+    font-size: 0.95rem;
+  }
+  
+  .timeline-text p {
+    font-size: 0.85rem;
+  }
+}
 

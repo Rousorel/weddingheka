@@ -27,6 +27,13 @@ class PhotoSwiper {
         document.addEventListener('touchmove', (e) => this.drag(e), { passive: false });
         document.addEventListener('mouseup', () => this.endDragging());
         document.addEventListener('touchend', () => this.endDragging());
+        
+        // Prevenir comportamiento por defecto en touch para mejor control
+        this.container.addEventListener('touchstart', (e) => {
+            if (e.target.closest('.photo-card:first-child')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     }
 
     setupCard(card, index) {
@@ -126,7 +133,9 @@ class PhotoSwiper {
         this.isDragging = false;
         this.currentCard.classList.remove('swiping');
 
-        const threshold = 100;
+        // Umbral más bajo para móvil (más sensible al swipe)
+        const threshold = window.innerWidth < 768 ? 50 : 100;
+        
         if (Math.abs(this.currentX) > threshold) {
             // Deslizar a la izquierda o derecha
             const direction = this.currentX > 0 ? 'swipe-right' : 'swipe-left';
@@ -150,14 +159,25 @@ class PhotoSwiper {
         } else {
             // Regresar a la posición original
             this.currentCard.style.transform = '';
+            this.updateCardPositions();
         }
     }
 
     updateCardPositions() {
         this.cards.forEach((card, index) => {
-            const scale = Math.max(1 - (index * 0.05), 0.8);
-            const translateY = index * -5;
-            card.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+            // Aplicar transforms basados en el index, pero permitir que CSS defina el estilo base
+            const scale = Math.max(1 - (index * 0.08), 0.52);
+            const translateY = index * 15;
+            
+            // Obtener la rotación actual del CSS y mantenerla
+            let baseRotate = 0;
+            if (index === 0) baseRotate = 4;
+            else if (index === 1) baseRotate = -8;
+            else if (index === 2) baseRotate = 12;
+            else if (index === 3) baseRotate = -6;
+            else baseRotate = 9;
+            
+            card.style.transform = `scale(${scale}) translateY(${translateY}px) rotateZ(${baseRotate}deg)`;
             card.style.zIndex = this.cards.length - index;
         });
     }
@@ -184,12 +204,18 @@ class PhotoSwiper {
         if (originalImages.length === 0) {
             // Si no hay imágenes con data-original, usar las fuentes originales definidas en el HTML
             const originalSources = [
-                'images/2016.JPG',
+                'images/2016.jpg',
+                'images/2016_2.JPG',
                 'images/2017.jpg',
+                'images/2017_2.jpg',
+                'images/2017_3.jpg',
+                'images/2017_4.jpg',
                 'images/2018.jpg',
                 'images/2018_2.jpg',
                 'images/2018_3.jpg',
-                'images/2019.jpg'
+                'images/2019.jpg',
+                'images/2019_2.jpg',
+                'images/2019_3.jpg'
             ];
             
             // Crear nuevas tarjetas
