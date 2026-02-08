@@ -101,6 +101,7 @@ section {
 .mb-0 {
   margin-bottom: 0 !important;
   white-space: nowrap;
+  font-size: 15px;
 }
 
 section::after {
@@ -387,7 +388,7 @@ input::placeholder, select::placeholder, textarea::placeholder {
 
 .img-fluid{
   border-radius: var(--radius-lg);
-  max-width: 1024px;
+  max-width: 716px;
   height: auto;
 }
 
@@ -799,8 +800,8 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
   .contador-subtitle{ font-size: 1.5rem }
   .count-label{ font-size: 0.7rem }
   .section2 h5{ font-size: 3.5rem }
-  .img-fluid { width: 100%; height: auto ; border-radius: 0%; }
-  .containericon img { width: 100%; height: auto; margin-top: -5rem;}
+  .img-fluid { width: 95%; height: auto ; border-radius: 0%; display:flex; justify-content:center}
+  .containericon img { width: 85%; height: auto; margin-top: -5rem;}
     h2{ font-size: clamp(2.5rem, 6vw, 4.5rem) }
 }
 
