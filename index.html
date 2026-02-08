@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,6 @@
   <!-- Scripts -->
   <script type="module" src="main.js" defer></script>   
   <script type="module" src="countdown.js" defer></script>
-  <script src="photoSwiper.js" defer></script>
   
   <!-- Bootstrap JS y Popper -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" defer></script>
@@ -38,14 +37,14 @@
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">
       <h1 class="display-3 mb-2">Heber & Kaitlyn</h1>
-      <p class="lead">¡Nos casamos!</p>
+      <p class="lead">02.05.26</p>
     </div>
   </header>
 
   <section id="contador" class="py-5">
     <div class="container text-center">
       <!-- Título cursivo (usa --font-special) -->
-      <h2 class="contador-title">Falta poco para el gran día</h2>
+      <h2 class="contador-title">FALTA POCO PARA EL GRAN DÍA</h2>
 
       <!-- Cuatro casillas con los contadores (mantenemos los ids para countdown.js) -->
       <div id="countdown" class="countdown-grid my-4 d-flex justify-content-center gap-3">
@@ -68,7 +67,7 @@
       </div>
 
       <!-- Subtítulo y bloque de fecha centrado -->
-      <p class="contador-subtitle mt-3">Nos casamos y nos encantaría que estuvieras ahí con nosotros.</p>
+      <p class="contador-subtitle mt-3">Nos casamos y nos encantaría que estuvieras con nosotros.</p>
 
       <div class="date-display d-flex align-items-center justify-content-center mt-3">
         <div class="date-side text-center text-uppercase">
@@ -87,12 +86,12 @@
         <h3 class="itinerario-subtitle mb-4"></h3>
         <div class="timeline-container">
             <div class="timeline-text ms-3 text-start">
-              <h5 class="mb-0">LUGAR</h5>
+              <h5 class="mb-0">Lugar</h5>
               <p class="mb-0 text-muted">Campo Mosqueda <br> Mexicali, Baja California</p>
             </div>
           <div class="timeline-item d-flex align-items-center justify-content-center mb-3">
-            <div class="rings">
-              <i class="icon-rings"><img src="images/rings.png" alt="rings-icon"></i>
+            <div class="mountain">
+              <i class="icon-mountain"><img src="images/lugar (2).png" alt="rings-icon"></i>
           <div class="button">
             <a href="https://maps.app.goo.gl/6f9BPJN46y8CUuUx5" class="btn btn-primary">Ver ubicación</a>
           </div>
@@ -100,8 +99,8 @@
           </div>
 
             <div class="timeline-text ms-3 text-start">
-              <h5 class="mb-0">RECEPCIÓN Y CEREMONIA</h5>
-              <p class="mb-0 text-muted">3:30 pm <br> Muelle Laguna, Campo Mosqueda</p>
+              <h5 class="mb-0">Recepción y ceremonia</h5>
+              <p class="mb-1 text-muted">3:30 pm <br> Muelle Laguna, Campo Mosqueda</p>
             </div>
           <div class="timeline-item d-flex align-items-center justify-content-center mb-3">
             <div class="rings">
@@ -109,7 +108,7 @@
             </div>
           </div>
             <div class="timeline-text ms-3 text-start">
-              <h5 class="mb-0">CELEBRACIÓN</h5>
+              <h5 class="mb-0">Celebración</h5>
               <p class="mb-0 text-muted">4:30 PM <br> Explanada del muelle</p>
             </div>
           <div class="timeline-item d-flex align-items-center justify-content-center mb-3">
@@ -128,6 +127,37 @@
   <section id="photo" class="timeline-item d-flex align-items-center justify-content-center mb-3">
     <img src="images/BODA1.PNG" class="img-fluid" alt="enamorados">
   </section>
+
+  <section id="info" class="section2">
+      <div class="dresscode">
+        <h5 class="mb-3">Dress code</h5>
+        <img src="images/dresscode.png" alt="dresscode" class="mb-3">
+        <p class="mb-3 text-muted">Vestimenta formal.<br> Recomendamos telas frescas, 
+        ligeras y zapatos cómodos apropiados para caminar en superficies irregulares.  
+        (Evita tacones finos que puedan hundirse)</p>
+      </div>
+
+      <div class="regalos">
+        <h5 class="mb-3">Regalos</h5>
+        <img src="images/gift.png" alt="gift" class="mb-3">
+        <p class="mb-3 text-muted">Tu presencia es nuestro mejor regalo, pero si gustas darnos un obsequio, te dejamos estas opciones:</p>
+          <div class="button">
+            <a href="https://www.amazon.com.mx/wedding/share/dominguezarroyo" class="btn btn-primary">Mesa de Regalos</a>
+          </div>
+      </div>
+  </section>
+
+  <section id="photo" class="timeline-item d-flex align-items-center justify-content-center mb-3">
+    <img src="images/sections.JPG" class="img-fluid" alt="enamorados">
+  </section>
+
+  <section id="itinerario" class="py-itinerario">
+    <div class="containericon">
+      <h2 class="text-center mb-4">Itinerario</h2>
+    <img src="images/itinerario.png" alt="itinerario" class="mb-3">
+    </div>
+  </section>
+
 
   <section id="confirmacion" class="py-5 bg-light">
     <div class="container">
@@ -180,8 +210,7 @@
   <footer class="py-4 bg-dark text-white">
     <div class="container text-center">
       <p class="mb-0">
-        <i class="fas fa-heart text-danger me-2"></i>
-        Heber & Kaitlyn
+        &copy; 2026 Heber & Kaitlyn. Todos los derechos reservados.
       </p>
     </div>
   </footer>

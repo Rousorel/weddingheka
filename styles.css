@@ -6,6 +6,7 @@
   --secondary: #CBF3BB;        /* Verde menta brillante */
   --secondary-light: #ECF4E8;  /* Verde pálido */
   --secondary-dark: #202020;   /* Verde menta oscuro */
+  --text-green: #60805c;       /* Verde oscuro para texto #2C3C34 */
   
   /* Tonos neutros */
   --bg: #FFFFFF;
@@ -45,10 +46,10 @@
   --shadow-lg: 0 8px 24px rgba(42,93,67,0.12);
   
   /* Tipografía */
-  --font-heading: "Cormorant Garamond", "Playfair Display", serif;
+  --font-heading: "Tangerine", cursive;
   --font-body: "Poppins", system-ui, sans-serif;
   --font-special: "Great Vibes", cursive;
-  --font-title: "Tangerine", cursive;
+  --font-title: "EB Garamond", serif;
 }
 
 /* Base / Mobile-first */
@@ -67,6 +68,10 @@ html, body {
   height: 100%;
 }
 
+.mb-3 {
+  margin-bottom: 0rem !important;
+}
+
 body {
   font-family: var(--font-body);
   margin: 0;
@@ -80,14 +85,22 @@ body {
     radial-gradient(circle at top left, var(--bg-alt) 0%, transparent 20%),
     radial-gradient(circle at bottom right, var(--bg-alt) 0%, transparent 20%);
   background-attachment: fixed;
+  background-image: url('images/Invitación.PNG');
 }
 
 section {
-  padding: calc(var(--section-spacing) * 0.7) 1.5rem;
   text-align: center;
   position: relative;
   background: var(--bg);
   margin: 0 auto;
+  background-image: url('images/Invitación.PNG');
+  background-position: center;
+  background-size: cover;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+  white-space: nowrap;
 }
 
 section::after {
@@ -104,7 +117,7 @@ section::after {
 
 /* Limit content width for large screens */
 section, header, footer {
-  max-width: var(--max-width);
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -127,15 +140,21 @@ section, header, footer {
   max-width: 100%;
 }
 
+.mountain img{
+  margin-top: -25px;
+}
+
 .rings img{
   width:130px;
   height:130px;
+  margin-top: -25px;
 }
 
 .cheers img{
   width:150px;
   height:150px;
-  margin-bottom: 17px;
+  margin-top: -15px;
+  margin-bottom: 15px;
 }
 
 .hero-overlay {
@@ -163,7 +182,9 @@ section, header, footer {
 
 .hero h1 {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-size: clamp(3.8rem, 8vw, 4.5rem);
+  font-weight: 700;
+  font-style: normal;
   color: white;
   margin: 0 0 0.5rem 0;
   line-height: 1.2;
@@ -173,23 +194,28 @@ section, header, footer {
 
 .hero p {
   font-family: var(--font-title);
-  font-size: clamp(3.5rem, 4vw, 2.2rem);
+  font-weight: 400;
+  font-size: clamp(2.0rem, 4vw, 2.2rem);
   color: var(--secondary-light);
   margin: 1rem 0;
   line-height: 1.4;
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-top: -25px;
 }
 
-@keyframes subtle-float {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.containericon img{
+  display: block;
+  margin: auto;
+  width: 647px;
+  height: 915px;
+  margin-top: -5rem;
 }
 
 h2 {
   font-family: var(--font-heading);
-  color: var(--accent);
+  color: var(--text-green);
   margin: 0 0 1.5rem 0;
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(5rem, 4vw, 2rem);
   font-weight: 600;
   position: relative;
   display: inline-block;
@@ -361,6 +387,8 @@ input::placeholder, select::placeholder, textarea::placeholder {
 
 .img-fluid{
   border-radius: var(--radius-lg);
+  max-width: 1024px;
+  height: auto;
 }
 
 .historia-fotos .photo-card {
@@ -623,10 +651,11 @@ iframe{border:0; width:100%; max-width:100%; height:250px; border-radius:8px}
   background: var(--success) !important;
   border: none !important;
   font-size: 15px !important;
+  margin-top: 10px !important;; 
 }
 
 .btn-primary:hover {
-  background: var(--itinerario)!important;
+  background: var(--text-green)!important;
   transform: translateY(-1px);
 }
 
@@ -642,8 +671,9 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
 /* Contador: tamaño aumentado para escritorio y móvil */
 .contador-title{
   font-family: var(--font-title);
+  font-weight: 400;
   /* más grande en escritorio, todavía responsivo */
-  font-size: clamp(4.6rem, 5.5vw, 2.6rem);
+  font-size: clamp(1.0rem, 5.5vw, 2.0rem);
   color: var(--text);
   margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
@@ -662,27 +692,39 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,250,0.98));
   box-shadow: 0 10px 26px rgba(42,93,67,0.08);
 }
 
 .count-box .number{
-  font-family: var(--font-heading);
+  font-family: var(--font-title);
   font-size: 3.5rem;
-  color: var(--itinerario);
+  color: var(--text-green);
   line-height: 1;
   margin-bottom: 10px;
 }
 
+.count-label{
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .contador-subtitle{
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-family: var(--font-title);
+  font-size: 2.2rem;
   color: var(--text-muted);
   margin-top: 0.6rem;
 }
 
 .date-display{
   align-items: center;
+  background-image: url('images/ejemplos.png');
+  background-color: var(--border); /* Solo para ver el tamaño de la imagen*/
+  background-size: 200px 200px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .date-side{
@@ -691,7 +733,7 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
 
 .date-label{
   font-family: var(--font-body);
-  color: var(--itinerario);
+  color: var(--text-green);
   font-size: 1.3rem;
   border-top: 2px solid var(--text-muted);
   border-bottom: 2px solid var(--text-muted);
@@ -701,18 +743,51 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
 .date-day{
   font-family: var(--font-heading);
   font-size: 8rem;
-  color: var(--itinerario);
+  color: var(--text-green);
   padding: 0 1rem;
   margin-bottom: 1.5rem;
 }
 
+.section2 h5{
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  color: var(--text-green);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.dresscode{
+  margin-bottom: 2rem;
+}
+
+.regalos{
+  margin-bottom: 2rem;
+}
+
+.dresscode img{
+  width: 130px;
+  height: 130px;
+  margin-bottom: 1rem;
+}
+
+.regalos img{
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+.section2 p{
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-muted);
+}
 
 @media (max-width: 900px){
   .count-box{ width: 100px; height: 82px }
   .count-box .number{ margin-bottom: 10px; font-size: 2.6rem}
   .date-side{ min-width: 110px }
   .date-day{ font-size: 8rem; margin-bottom: 2rem; }
-  
+  .contador-title{ font-size: clamp(1.0rem, 6vw, 1.9rem) }
+  .count-label{ font-size: 0.8rem }
+  .containericon img { width: 100%; height: auto; }
 }
 
 @media (max-width: 640px){
@@ -720,15 +795,19 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
   .count-box .number{ margin-bottom: 10px; font-size: 2.4rem }
   .date-side{ min-width: 80px }
   .date-day{ font-size: 8.6rem; margin-bottom: 2rem; }
-  .contador-title{ font-size: clamp(2.4rem, 6vw, 1.9rem) }
-  .contador-subtitle{ font-size: 1.3rem }
+  .contador-title{ font-size: clamp(1.0rem, 6vw, 1.9rem); white-space: nowrap; justify-content: center;}
+  .contador-subtitle{ font-size: 1.5rem }
+  .count-label{ font-size: 0.7rem }
+  .section2 h5{ font-size: 3.5rem }
+  .img-fluid { width: 100%; height: auto ; border-radius: 0%; }
+  .containericon img { width: 100%; height: auto; margin-top: -5rem;}
+    h2{ font-size: clamp(2.5rem, 6vw, 4.5rem) }
 }
 
 /* Itinerario inline dentro de contador */
 .itinerario-inline {
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 2px solid var(--border-light);
+  margin-top: 0rem;
+  padding-top: 0rem;
 }
 
 .itinerario-subtitle {
@@ -742,12 +821,15 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .timeline-item {
   display: flex;
   align-items: center;
   text-align: left;
+  padding-bottom: 20px;
 }
 
 .timeline-icon {
@@ -764,9 +846,11 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
 
 .timeline-text h5 {
   font-size: 1.5rem;
-  color: var(--itinerario);
+  color: var(--text-green);
   font-weight: 600;
   text-align: center;
+  font-family: var(--font-heading);
+  font-size: 5rem;
 }
 
 .timeline-text p {
@@ -776,9 +860,11 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
 }
 
 @media (max-width: 640px){
+
+
   .itinerario-inline {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
+    margin-top: 0;
+    padding-top: 0;
   }
   
   .timeline-icon {
@@ -791,7 +877,7 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
   }
   
   .timeline-text h5 {
-    font-size: 1.5rem;
+    font-size: 3.5rem;
     text-align: center;
   }
   
