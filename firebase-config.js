@@ -10,4 +10,4 @@ export const firebaseConfig = {
 };
 
 // Email del administrador (ajusta esto al email del usuario admin en Firebase Auth)
-export const adminEmail = 'arroyo.kaitlyn.valle@gmail.com';
+export const adminEmail = 'heberdoption@gmail.com';
