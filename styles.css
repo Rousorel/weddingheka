@@ -152,7 +152,7 @@ section, header, footer {
 }
 
 .cheers img{
-  width:150px;
+  width:140px;
   height:150px;
   margin-top: -15px;
   margin-bottom: 15px;
@@ -648,7 +648,6 @@ iframe{border:0; width:100%; max-width:100%; height:250px; border-radius:8px}
   background: var(--success) !important;
   border: none !important;
   font-size: 15px !important;
-  margin-top: 10px !important;;
   margin-bottom: 10px !important;
 }
 
@@ -718,9 +717,8 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
 
 .date-display{
   align-items: center;
-  background-image: url('images/ejemplos.png');
-  background-color: var(--border); /* Solo para ver el tamaño de la imagen*/
-  background-size: 200px 200px;
+  background-image: url('images/center.png');
+  background-size: 150px 150px;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -728,6 +726,7 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
 .date-side{
   min-width: 160px;
 }
+
 
 .date-label{
   font-family: var(--font-body);
@@ -878,6 +877,25 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
   align-items: center;
   text-align: left;
   padding-bottom: 20px;
+  margin-bottom: 40px;          /* space between sections */
+  position: relative;           /* needed for the line */
+}
+
+/* separator line */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* hide line on last item */
+.timeline-item:last-of-type::after {
+  display: none;
 }
 
 .timeline-icon {
@@ -927,6 +945,7 @@ input[type=number]{-moz-appearance:textfield; -webkit-appearance:textfield; appe
   .timeline-text h5 {
     font-size: 3.5rem;
     text-align: center;
+    margin-top: -1rem;
   }
   
   .timeline-text p {
