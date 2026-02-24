@@ -112,3 +112,19 @@ formConfirmacion.addEventListener("submit", async (e) => {
     alert("Error al confirmar la asistencia. Por favor intenta nuevamente.");
   }
 });
+
+document.getElementById('downloadBtn').addEventListener('click', async function () {
+const imageUrl = 'images/mapamosqueda.jpeg'; // Replace with your image URL
+const response = await fetch(imageUrl);
+const blob = await response.blob();
+const url = URL.createObjectURL(blob);
+
+const link = document.createElement('a');
+link.href = url;
+link.download = 'mapa-campo-mosqueda.jpg'; // Desired file name
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+
+URL.revokeObjectURL(url); // Clean up the temporary URL
+});
