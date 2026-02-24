@@ -114,7 +114,7 @@ formConfirmacion.addEventListener("submit", async (e) => {
 });
 
 document.getElementById('downloadBtn').addEventListener('click', async function () {
-const imageUrl = 'images/mapamosqueda.jpeg'; // Replace with your image URL
+const imageUrl = 'images/mapamosqueda.jpg'; // Replace with your image URL
 const response = await fetch(imageUrl);
 const blob = await response.blob();
 const url = URL.createObjectURL(blob);
