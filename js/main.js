@@ -97,7 +97,7 @@ formConfirmacion.addEventListener("submit", async (e) => {
       fechaConfirmacion: new Date()
     });
 
-    mensaje.textContent = "✅ ¡Gracias por confirmar tu asistencia!";
+    mensaje.textContent = "Gracias por tomarte el tiempo de responder nuestra invitación.";
     formConfirmacion.reset();
     
     // Limpiar el estado
